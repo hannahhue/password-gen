@@ -58,8 +58,8 @@ function getLength() {
         userChoice = 0;
       }
         else {
-            confirmNumber = confirm("Will this contain numbers?");
-            confirmCharacter = confirm("Will this contain special characters?");
+            confirmNum = confirm("Will this contain numbers?");
+            confirmSpecial = confirm("Will this contain special characters?");
             confirmUppercase = confirm("Will this contain Uppercase letters?");
             confirmLowercase = confirm("Will this contain Lowercase letters?");
         }
@@ -69,12 +69,31 @@ function getLength() {
 
 }
 
+function getChoice(currentOption) {
+    var userChoice = "a",
+      messagePrompt = "";
+    var messagePrompt = ('Would you like '.concat(currentOption));
+    messagePrompt = messagePrompt.concat(' characters (y/n)?');
+
+    while (userChoice = "a") {
+      userChoice = (window.prompt(messagePrompt));
+      userChoice = userChoice.toLowerCase();
+      if (userChoice == "y") {
+        return true;
+      } else if (userChoice == "n") {
+        return false;
+      }
+    }
+}
+
+var generateBtn = document.querySelector("#generate");
+
 // Write password to the #password input
 function writePassword() {
     var password = generatePassword();
-    var passwordText = document.querySelector("#password");
+    var passText = document.querySelector("#password");
   
-    passwordText.value = password;
+    passText.value = password;
   
 }
 
