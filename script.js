@@ -1,7 +1,7 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-function generatePassword() [
+function generatePassword() {
 var lowerCase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var upperCase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 var numList = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
@@ -19,19 +19,32 @@ while (type == false) {
     var specialCharacters = getChoice("special");
     if ((lowerCase) || (upperCase) || (numericCharacters) || (specialCharacters)) {
       charTypeSelected = true;
-    } else {
+    } 
+    else {
       window.alert("You must select at least one character type.")
     }
-}
+  }
 
+if (lowerCase) {
+    selectArray = selectArray.concat(lowerCase);
+  }
+if (upperCase) {
+    selectArray = selectArray.concat(upperCase);
+  }
+if (numericCharacters) {
+    selectArray = selectArray.concat(numList);
+  }
+if (specialCharacters) {
+    selectArray = selectArray.concat(specialList);
+  }
 
-// Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
+  var passString = "";
+  // This loop will take array, and randomly select elements
+  for (var i = 0; i < passLength; i++) {
+    passString += selectArray[Math.floor(Math.random() * (selectArray.length))];
+  }
 
-  passwordText.value = password;
-
+  return passString;
 }
 
 function getLength() {
@@ -54,6 +67,15 @@ function getLength() {
   
     return userChoice;
 
+}
+
+// Write password to the #password input
+function writePassword() {
+    var password = generatePassword();
+    var passwordText = document.querySelector("#password");
+  
+    passwordText.value = password;
+  
 }
 
 // Add event listener to generate button
